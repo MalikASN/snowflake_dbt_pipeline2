@@ -6,7 +6,7 @@ WITH sellers AS (
 
 
 SELECT seller_id, 
-seller_zip_code,
+seller_zip_code_prefix AS seller_zip_code,
 seller_city,
 seller_state
 
