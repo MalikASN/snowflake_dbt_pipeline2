@@ -31,6 +31,10 @@ clean-targets:         # directories to be removed by `dbt clean`
 # files using the `{{ config(...) }}` macro.
 models:
   brazil_orders_pipeline:
-    # Config indicated by + and applies to all files under models/example/
-    example:
+    # Configuration par défaut pour le dossier staging (Vues)
+    staging:
       +materialized: view
+    
+    # Configuration par défaut pour le dossier marts (Tables)
+    marts:
+      +materialized: table
