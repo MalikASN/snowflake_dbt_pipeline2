@@ -21,7 +21,7 @@ jobs:
         run: pip install dbt-snowflake
 
       - name: Run dbt
-        # Suppression du working-directory car le projet est à la racine !
+        # Suppression du working-dieerectory car le projet est à la racine !
         env:
           SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
           SNOWFLAKE_USER: ${{ secrets.SNOWFLAKE_USER }}
