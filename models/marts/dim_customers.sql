@@ -7,4 +7,4 @@ WITH customers AS (
 
 SELECT *
 
-FROM customers ;
+FROM customers

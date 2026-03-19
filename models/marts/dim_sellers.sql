@@ -11,5 +11,5 @@ seller_city,
 seller_state
 
 
-FROM sellers ;
+FROM sellers
 

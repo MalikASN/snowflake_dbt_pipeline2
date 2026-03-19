@@ -5,4 +5,4 @@ WITH raw_payments AS (
 )
 
 
-SELECT * FROM raw_payments WHERE PAYMENT_TYPE  = 'credit_card';
+SELECT * FROM raw_payments WHERE PAYMENT_TYPE  = 'credit_card'

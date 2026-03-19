@@ -4,4 +4,4 @@ WITH payments AS (
     SELECT * FROM {{ ref('stg_payments') }}
 )
 
-select * from payments;
+select * from payments
