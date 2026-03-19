@@ -1,0 +1,35 @@
+version: 2
+
+models:
+  - name: dim_customers
+    description: "Customer dimension model."
+    columns:
+      - name: customer_id
+        description: "Primary key for the customer in the dimension."
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_sellers
+    description: "Seller dimension model."
+    columns:
+      - name: seller_id
+        description: "Primary key for the seller in the dimension."
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_payments
+    description: "Payments dimension-like model filtered to credit card transactions."
+
+  - name: fct_order_items
+    description: "Order items fact model enriched with order lifecycle attributes."
+    columns:
+      - name: order_id
+        description: "Order identifier."
+        tests:
+          - not_null
+      - name: order_item_id
+        description: "Line item sequence within an order."
+        tests:
+          - not_null

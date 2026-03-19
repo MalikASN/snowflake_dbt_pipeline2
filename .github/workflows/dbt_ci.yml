@@ -1,0 +1,35 @@
+name: dbt_ci_dev
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  run_dbt_test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install dbt
+        run: pip install dbt-snowflake
+
+      - name: Run dbt
+        env:
+          # Ici on utilise les secrets GitHub pour remplir le profile dbt
+          DBT_SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
+          DBT_SNOWFLAKE_USER: ${{ secrets.SNOWFLAKE_USER }}
+          DBT_SNOWFLAKE_PASSWORD: ${{ secrets.SNOWFLAKE_PASSWORD }}
+          DBT_SNOWFLAKE_ROLE: ${{ secrets.SNOWFLAKE_ROLE }}
+          DBT_SNOWFLAKE_WAREHOUSE: ${{ secrets.SNOWFLAKE_WAREHOUSE }}
+          DBT_SNOWFLAKE_DATABASE: BRAZIL_ORDERS
+        run: |
+          dbt deps
+          dbt debug --target dev
+          dbt build --target dev  # Build + Test en une seule commande !

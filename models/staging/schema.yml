@@ -1,0 +1,52 @@
+version: 2
+
+models:
+  - name: stg_customers
+    description: "Cleaned customer data with standardized column names."
+    columns:
+      - name: customer_id
+        description: "Primary key for the customer."
+        tests:
+          - unique
+          - not_null
+      
+
+  - name: stg_sellers
+    description: "Cleaned customer data with standardized column names."
+    columns:
+      - name: seller_id
+        description: "Primary key for the seller."
+        tests:
+          - unique
+          - not_null
+      - name: state
+        description: "Two-letter state code."
+        tests:
+          - not_null
+          
+  - name: stg_order_items
+    description: "Cleaned customer data with standardized column names."
+    columns:
+      - name: order_item_id
+        description: "Primary key for the order item ."
+        tests:
+          - not_null
+  
+  - name: stg_orders
+    description: "Cleaned customer data with standardized column names."
+    columns:
+      - name: order_id
+        description: "Primary key for the order ."
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_payments
+    description: "Cleaned payments data with standardized column names."
+    columns:
+      - name: order_id
+        description: "Primary key for the order id in paymmnets"
+        tests:
+          - not_null        
+
+

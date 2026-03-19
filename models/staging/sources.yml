@@ -1,0 +1,17 @@
+version: 2
+
+sources:
+  - name: brazil         # Le "surnom" que tu donnes à cette source dans dbt
+    database: BRAZIL_ORDERS  # Le nom exact de la base de données dans Snowflake
+    schema: PUBLIC           # Le nom exact du schéma dans Snowflake
+    tables:
+      - name: orders
+        description: "Table brute contenant les en-têtes de commandes."
+      - name: order_items
+        description: "Table brute contenant le détail des articles par commande."
+      - name: customers
+        description: "Table brute contenant les informations des clients."
+      - name: sellers
+        description: "Table brute contenant les informations des vendeurs."
+      - name: payments
+        description: "Table brute contenant les informations des payments."  
