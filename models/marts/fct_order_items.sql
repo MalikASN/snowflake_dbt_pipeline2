@@ -10,7 +10,7 @@ WITH order_items AS (
     SELECT * FROM {{ ref('stg_order_items') }}
 ),
 
-orders AS (
+orders AS  (
     SELECT * FROM {{ ref('stg_orders') }}
 )
 
