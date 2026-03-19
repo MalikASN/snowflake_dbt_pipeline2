@@ -1,0 +1,14 @@
+# profiles.yml
+brazil_orders_pipeline: # Doit matcher le nom dans dbt_project.yml
+  target: ci
+  outputs:
+    ci:
+      type: snowflake
+      account: "{{ env_var('SNOWFLAKE_ACCOUNT') }}"
+      user: "{{ env_var('SNOWFLAKE_USER') }}"
+      password: "{{ env_var('SNOWFLAKE_PASSWORD') }}"
+      role: "{{ env_var('SNOWFLAKE_ROLE') }}"
+      warehouse: "{{ env_var('SNOWFLAKE_WAREHOUSE') }}"
+      database: "{{ env_var('SNOWFLAKE_DATABASE') }}"
+      schema: "dbt_ci_{{ env_var('GITHUB_RUN_ID') }}" # Schéma unique par test !
+      threads: 4
