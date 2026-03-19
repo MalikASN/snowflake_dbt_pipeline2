@@ -6,7 +6,6 @@
   )
 }}
 
--- 1. Import CTEs: Grab the staging models you actually need
 WITH order_items AS (
     SELECT * FROM {{ ref('stg_order_items') }}
 ),
@@ -40,7 +39,6 @@ LEFT JOIN orders
 
 {% if is_incremental() %}
 
-  -- Ici, le commentaire SQL est autorisé car il est EN DEHORS des {{ }}
   WHERE orders.purchased_at > (SELECT MAX(purchased_at) FROM {{ this }})
 
 {% endif %}
